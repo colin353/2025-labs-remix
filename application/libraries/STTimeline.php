@@ -334,10 +334,12 @@ class STProjectEntity extends STEntity {
 	}
 	
 	function renderEntity() {
+		$desc = limitString($this->project->description,80);
+	
 		$retval = <<<HTML
 
 <h2>{$this->project->name}</h2>
-
+<span class=subtext>{$desc}</span>
 HTML;
 
 		return $retval;

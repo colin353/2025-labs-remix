@@ -20,6 +20,12 @@ function number_ending ($number){
    return (number_format($number,0) . $suff[$index]);
 }  
 
+function limitString($str,$len) {
+	if(strlen($str) > $len) {
+		return substr($str,0,$len-3)."...";
+	}
+}
+
 function explain_time($td) {
 	
 	if($td > 1000000000) $td = $td - time();
