@@ -130,14 +130,16 @@ function ajaxSubmitCaption() {
 <?endif?>
 
 <?if(!empty($c->searchKeywords)): ?>
-	<span>Searched for: <?=$c->searchKeywords;?></span>
+	<span style="padding-left:25px;">Searched for: <?=$c->searchKeywords;?></span>
 <?endif?>
 
 <?php
 $ents = $c->getSubEntities(true);
 if(empty($ents)):?>
 
-<p>Nothing here yet...</p>
+<div style="padding-left:25px;"> 
+	<p>Nothing here yet...</p>
+</div>
 
 <?else: foreach($ents as $e):?>
 	<div class=entitycontainer onclick=doEntity(<?=$e->entity?>) ><?=$e->renderMinorEntity()?></div>

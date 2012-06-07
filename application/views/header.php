@@ -18,15 +18,22 @@
 		background-color: grey;
 		bottom: 0;
 		height: 45px;
-		left: 0;
-		padding: 10px;
+		left: 50%;
+		margin-left: -512px;
+		/*padding: 10px;*/
+		padding: 0 !important;
 		position: fixed;
-		width: 100%;
+		width: 1024px;
+	}
+	
+	div.entityinteractor form {
+		margin-left: 10px;
+		margin-top: 2px;
 	}
 	
 	div.entityinteractor input[type=text] {
 		font-size: 15px;
-		height: 40px;  
+		height: 32px;  
 		width: 500px;
 	}
 	
@@ -34,9 +41,12 @@
 		min-height: 55px;
 	}
 	
+	div#body {
+	}
+	
 	input#search {
 		float:right;
-		height: 40px;
+		height: 32px;;
 		margin-right: 20px;
 		font-size: 15px;
 		width: 300px;
@@ -46,6 +56,24 @@
 		height: 40px;
 		width: 80px;
 		font-size: 15px;
+	}
+	
+	div#body > hr {
+		margin-left: -25px;
+	}
+	
+	div.entitycontainer:hover {
+		background-color: #EEEEEE;
+		box-shadow: 0px 0px 5px #EEEEEE;
+	}
+	
+	div#timelinecontainer {
+		position: relative;
+		left: -25px;
+	}
+	
+	div.entitycontainer {
+		padding-left: 25px;
 	}
 	
 	div.overlay {
@@ -129,7 +157,7 @@
 	}
 	
 	body {
-		background-color: #fff;
+		background-color: #DDDDDD;
 		font: 13px/20px 'Open Sans', Arial, sans-serif;
 		color: #333333;
 		margin: 0;
@@ -161,7 +189,6 @@
 
 	#container > h1 {
 		color: #333333;
-		background-color: transparent;
 		border-bottom: 1px solid #D0D0D0;
 		font-size: 19px;
 		font-weight: normal;
@@ -194,6 +221,13 @@
 		margin-top: -15px;
 		margin-bottom: -55px;
 		padding-bottom: 60px;
+		background-color:white;
+		box-shadow: 0 0 16px grey;
+		position:relative;
+		width: 1024px;
+		margin-left: auto;
+		margin-right: auto;
+		border: 1px solid grey;
 	}
 	
 	#container > h1 {
