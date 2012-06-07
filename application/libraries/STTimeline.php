@@ -33,6 +33,19 @@ class STEntity {
 		$this->searchKeywords = '';
 	}	
 	
+	function showContext() {
+		$b = base_url();
+		$c = $this->context;
+	
+		if($this->id != 1 && $this->context != 1) $retval = <<<HTML
+	<a href="{$b}collaborate/timeline/display/{$c}>">(show context)</a>
+HTML;
+		else $retval = '';
+		
+		return $retval;
+	
+	}
+	
 	function matchKeywords($k) {
 		
 		
@@ -120,6 +133,18 @@ class STEntity {
 		
 		foreach(explode(" ","id descriptor context") as $e) $c[$e] = $this->{$e};
 		
+		
+		$q = new STEntity($this->context);
+		
+		$c['ancestors'] = 'd'.$this->context.'d';
+		
+		$count = 0;
+		while($q->context != 1 && $count < 100) {
+			$count++;
+			$c['ancestors'].= $q->context.'d';
+			$q = new STEntity($q->context);
+		}
+		
 		if($this->id == 1 || !isset($this->id)) {
 			unset($c['id']);
 			$this->CI->db->insert('entities',$c);
@@ -150,7 +175,7 @@ class STCommentEntity extends STEntity {
 		$retval = <<<HTML
 
 <h2>{$this->comment->text}</h2>
-<span class=subtext>Posted {$te} by {$box} {$author->name}</span>
+<p><span class=subtext>Posted {$te} by {$box} {$author->name} <span class=subtext>{$this->showContext()}</span></span></p>
 
 HTML;
 
@@ -166,7 +191,7 @@ HTML;
 		
 		$retval = <<<HTML
 
-<p>{$this->comment->text} <span class=subtext>{$box} {$author->name} &nbsp;&nbsp;&nbsp; {$time}</span></p>
+<p>{$this->comment->text} <span class=subtext>{$box} {$author->name} &nbsp;&nbsp;&nbsp; {$time} </span></p>
 
 HTML;
 
@@ -269,7 +294,7 @@ class STFileEntity extends STEntity {
 		$retval = <<<HTML
 
 <div class=imgcontainer-big>{$file}
-<p>{$this->file->caption} <span class=subtext>{$author}</span></p>
+<p>{$this->file->caption} <span class=subtext>{$author} <span class=subtext>{$this->showContext()}</span></span></p>
 </div>
 HTML;
 

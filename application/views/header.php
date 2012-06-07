@@ -15,20 +15,18 @@
 		height: 100%;
 	}
 	div.entityinteractor {
-		background-color: grey;
-		bottom: 0;
-		height: 45px;
-		left: 50%;
-		margin-left: -512px;
-		/*padding: 10px;*/
-		padding: 0 !important;
-		position: fixed;
-		width: 1024px;
+		background-color: #999999;
+		margin-left: -25px;
 	}
 	
 	div.entityinteractor form {
-		margin-left: 10px;
-		margin-top: 2px;
+		padding: 10px;
+		
+	}
+	
+	input[type=button] , input[type=submit] {
+		background-color: #DDDDDD;
+		border: 1px solid grey;
 	}
 	
 	div.entityinteractor input[type=text] {
@@ -56,6 +54,8 @@
 		height: 40px;
 		width: 80px;
 		font-size: 15px;
+		position:relative;
+		top:1px;
 	}
 	
 	div#body > hr {

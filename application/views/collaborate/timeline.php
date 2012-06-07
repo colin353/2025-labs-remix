@@ -122,7 +122,14 @@ function ajaxSubmitCaption() {
 <div class=mainentitycontainer>
 <?=$c->renderEntity()?>
 </div>
-<hr>
+
+<div class=entityinteractor id=entityinteractor>
+<form onsubmit="return ajaxSubmitEntityInteractor('postComment')">
+<input type=text id=entityinteractor_message placeholder="Write a comment, or drag and drop a file!" />
+<input type=submit value=Post />
+<input type=hidden id=entityinteractor_context value=<?=$c->id?> />
+</form>
+</div>
 
 <div id=timelinecontainer>
 
@@ -151,13 +158,7 @@ if(empty($ents)):?>
 
 </div>
 
-<div class=entityinteractor id=entityinteractor>
-<form onsubmit="return ajaxSubmitEntityInteractor('postComment')">
-<input type=text id=entityinteractor_message placeholder="Write a comment, or drag and drop a file!" />
-<input type=submit value=Post />
-<input type=hidden id=entityinteractor_context value=<?=$c->id?> />
-</form>
-</div>
+
 
 <div class=overlay ></div>
 <div class=overform>

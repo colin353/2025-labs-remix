@@ -25,6 +25,50 @@ class System extends MY_Controller {
 		
 	}
 	
+	public function cron() {
+		$this->permission('public');
+		// Check IP address!
+		
+		$this->load->library('email');
+	
+		$users = $this->db->select('id')->get('users')->result_array();
+	
+		$u = new User(1);
+
+		$this->email->set_newline("\r\n");
+		
+		/*
+		
+			Future Colin:
+			
+			Your next course of action is to develop the string specifier in the
+			database which describes decendancy of STEntity objects and place the
+			construction of this string in the STEntity->applyChanges() function.
+			
+			Then, once you have that, you'll be able to detect heredity and sort 
+			recently-created entities into bins: one for each project and one for
+			general events that were not descendants of projects.
+			
+			Additionally, you'll be able to paginate the timeline using more 
+			efficient MySQL queries, and have scroll-based pagination like tumblr.		
+		
+		*/
+		
+		
+		/*$this->email->from('robot@2025-labs.com','Staff Robot');
+		$this->email->to($u->email);
+		$this->email->subject('2025-labs.com Digest: '.date('l jS F Y'));
+		
+		$this->email->message($this->load->view('collaborate/digestemail'),array('user'=>$u),true);
+		
+		$this->email->send();
+		*/
+		
+		$this->load->view('collaborate/digestemail',array('user'=>$u));
+		
+		return;
+	}
+	
 	function upload() {
 		if(!array_key_exists('pic',$_FILES) || $_FILES['pic']['error'] != 0) return;
 		if(!$this->permission('user')) return;
