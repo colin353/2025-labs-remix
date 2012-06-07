@@ -26,6 +26,14 @@ function limitString($str,$len) {
 	}
 }
 
+function process_all_links($t) {
+	$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+	if(preg_match($reg_exUrl, $t, $url))
+		$t = preg_replace($reg_exUrl, "<a href='{$url[0]}'>{$url[0]}</a> ", $t);
+		
+	return $t;
+}
+
 function explain_time($td) {
 	
 	if($td > 1000000000) $td = $td - time();

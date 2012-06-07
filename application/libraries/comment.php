@@ -17,9 +17,7 @@ class Comment {
 		}
 		else foreach(explode(" ","id text author creationdate entity") as $e) $this->{$e} = $u[$e];
 		
-		$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-		if(preg_match($reg_exUrl, $this->text, $url))
-			$this->text = preg_replace($reg_exUrl, "<a href='{$url[0]}'>{$url[0]}</a> ", $this->text);
+		$this->text = process_all_links($this->text);
 		
 		$this->creationdate = strtotime($this->creationdate);
 		

@@ -14,6 +14,8 @@ class File {
 		
 		foreach(explode(" ","id caption author filename") as $e) $this->{$e} = $u[$e];
 		
+		$this->caption = process_all_links($this->caption);
+		
 	}
 	
 	public function renderFileBlob() {
