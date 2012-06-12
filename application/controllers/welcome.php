@@ -17,6 +17,7 @@ class Welcome extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	 
 	public function __construct() {
 		parent::__construct();
 				
@@ -39,6 +40,14 @@ class Welcome extends MY_Controller {
 		$this->permission('public');
 		$this->selectMenuItem('latest');
 		$this->show('homepage/latest');
+	}
+	
+	public function event() {
+		$this->permission('public');
+		echo exec("C:\wamp\bin\php\php5.3.10\php.exe C:\wamp\www\notify\listen.php test");
+		
+		echo "test";
+		
 	}
 	
 	public function login()
