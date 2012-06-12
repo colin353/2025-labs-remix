@@ -292,10 +292,10 @@ class STFileEntity extends STEntity {
 		$file = $this->file->renderFile();
 		
 		$retval = <<<HTML
-
-<div class=imgcontainer-big>{$file}
+ 
+<p><div class=imgcontainer-big>{$file}
 <p>{$this->file->caption} <span class=subtext>{$author} <span class=subtext>{$this->showContext()}</span></span></p>
-</div>
+</div></p>
 HTML;
 
 		return $retval;
@@ -315,10 +315,11 @@ HTML;
 		$file = $this->file->renderFile();
 		
 		$retval = <<<HTML
-
+<p>
 <div class=imgcontainer-med>{$file}
 <span class=pinline >{$this->file->caption} <span class=subtext>{$author}</span></span>
 </div>
+</p>
 HTML;
 
 		return $retval;
